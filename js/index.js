@@ -145,22 +145,88 @@ document.getElementById("calculate2").onclick = function () {
     `;
 }
 // Liệt kê các số nguyên tố trong khoảng từ a đến b
-document.getElementById("calculate2").onclick = function () {
+function isPrime(n) {
+    if (n <= 1) {
+        return false;
+    }
+
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+// document.getElementById("calculate3").onclick = function () {
+//     var a = +document.getElementById("a").value;
+//     var b = +document.getElementById("b").value;
+//     var result4 = document.getElementById("result4");
+//     var GT = 1;
+//     var i = 1;
+//     if (isNaN(a) || isNaN(b) || a >= b) {
+//         result4.innerHTML = '<p>Giá trị a và b phải là số nguyên dương và a &lt; b.</p>';
+//         return;
+//     }
+
+//     let primeNumbers = [];
+
+//     for (let i = a; i <= b; i++) {
+//         if (isPrime(i)) {
+//             primeNumbers.push(i);
+//         }
+//     }
+
+//     var primesList = primeNumbers.join(', ');
+//     result4.innerHTML = `
+//         <p>Số nguyên tố trong khoảng từ ${a} đến ${b}: ${primesList}</p>
+//     `;
+// }
+// document.getElementById("calculate3").onclick = function () {
+//     var a = +document.getElementById("a").value;
+//     var b = +document.getElementById("b").value;
+//     var result4 = document.getElementById("result4");
+//     if (isNaN(a) || isNaN(b) || a >= b) {
+//         result4.innerHTML = '<p>Giá trị a và b phải là số nguyên dương và a &lt; b.</p>';
+//         return;
+//     }
+
+//     let primeNumbers = [];
+//     var i = a;
+//     do {
+//         if (isPrime(i)) {
+//             primeNumbers.push(i);
+//         }
+//         i++;
+//     }while(i <= b)
+
+//     var primesList = primeNumbers.join(', ');
+//     result4.innerHTML = `
+//         <p>Số nguyên tố trong khoảng từ ${a} đến ${b}: ${primesList}</p>
+//     `;
+// }
+document.getElementById("calculate3").onclick = function () {
     var a = +document.getElementById("a").value;
     var b = +document.getElementById("b").value;
     var result4 = document.getElementById("result4");
     var GT = 1;
     var i = 1;
-    if (isNaN(n) || n < 0) {
-        result3.innerHTML = '<p>Giá trị n phải là số nguyên không âm.</p>';
+    if (isNaN(a) || isNaN(b) || a >= b) {
+        result4.innerHTML = '<p>Giá trị a và b phải là số nguyên dương và a &lt; b.</p>';
         return;
     }
-    do{
-        GT = GT * i;
-        i++;
-    }while(i <= n)
 
-    result3.innerHTML = `
-        <p>N! = 1 * 2 * ... * ${n} = ${GT}</p>
+    let primeNumbers = [];
+    var i = a;
+    while(i <= b) {
+        if (isPrime(i)) {
+            primeNumbers.push(i);
+        }
+        i++;
+    }
+
+    const primesList = primeNumbers.join(', ');
+    result4.innerHTML = `
+        <p>Số nguyên tố trong khoảng từ ${a} đến ${b}: ${primesList}</p>
     `;
 }
